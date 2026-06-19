@@ -1,5 +1,6 @@
 {
     "name": "fandr/sssocks",
+    "description": "E-commerce platform for premium socks",
     "type": "project",
     "license": "MIT",
     "authors": [
