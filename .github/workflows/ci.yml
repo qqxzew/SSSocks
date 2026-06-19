@@ -52,7 +52,7 @@ jobs:
         run: composer install --prefer-dist --no-progress
 
       - name: Check PHP Syntax (Linter)
-        run: find public/ -type f -name "*.php" -exec php -l {} \;
+        run: find public/ src/ -type f -name "*.php" -exec php -l {} \;
 
       - name: Run PHPStan (Static Analysis)
         run: vendor/bin/phpstan analyse
