@@ -29,8 +29,7 @@ services:
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
-      - mysql_data:/var/lib/mysql
-
+      - sssocks_db_data_v2:/var/lib/mysql
   redis:
     image: redis:alpine
     restart: always
@@ -38,5 +37,5 @@ services:
       - redis_data:/data
 
 volumes:
-  mysql_data:
+  sssocks_db_data_v2:
   redis_data:
