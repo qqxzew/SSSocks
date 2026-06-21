@@ -4,6 +4,7 @@ $env = parse_ini_file(__DIR__ . '/.env');
 return [
     'paths' => [
         'migrations' => '%%PHINX_CONFIG_DIR%%/db/migrations',
+        'seeds' => '%%PHINX_CONFIG_DIR%%/db/seeds'
     ],
     'environments' => [
         'default_environment' => 'development',

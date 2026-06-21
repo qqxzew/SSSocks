@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SSSocks - Premium Socks</title>
+    <style>
+        body { font-family: sans-serif; background: #f4f4f4; padding: 20px; }
+        .product-card { background: white; padding: 15px; margin-bottom: 10px; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .price { color: green; font-weight: bold; }
+    </style>
+</head>
+<body>
+<h1>SSSocks</h1>
+
+<div class="product-list">
+    {foreach $products as $product}
+        <div class="product-card">
+            <h2>{$product->name}</h2>
+            <p>Code: {$product->sku}</p>
+            <p>Left in storage: {$product->stock} pt.</p>
+            <p class="price">Price: {$product->price / 100} $</p>
+        </div>
+    {/foreach}
+</div>
+</body>
+</html>

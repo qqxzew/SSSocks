@@ -13,8 +13,10 @@ final class Bootstrap
 
         $configurator->setDebugMode(true);
         $configurator->enableTracy(__DIR__ . '/../log');
-
         $configurator->setTempDirectory(__DIR__ . '/../temp');
+
+        $env = parse_ini_file(__DIR__ . '/../.env');
+        $configurator->addDynamicParameters(['env' => $env]);
 
         $configurator->addConfig(__DIR__ . '/../config/common.neon');
 
