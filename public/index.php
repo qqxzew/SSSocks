@@ -3,7 +3,6 @@ declare(strict_types = 1);
 
 require __DIR__ . '/../vendor/autoload.php';
 
-use Tracy\Debugger;
 use Latte\Engine;
 
 $configurator = App\Bootstrap::boot();

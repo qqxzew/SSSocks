@@ -16,7 +16,7 @@ final class PasswordManager
 
     public function hash(string $plainPassword): string
     {
-    return $this->passwords->hash($plainPassword);
+        return $this->passwords->hash($plainPassword);
     }
 
     public function verify(string $plainPassword, string $hashedPassword): bool

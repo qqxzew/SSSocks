@@ -51,6 +51,9 @@ jobs:
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress
 
+      - name: Create .env file
+        run: cp .env.example .env
+
       - name: Check PHP Syntax (Linter)
         run: find public/ src/ -type f -name "*.php" -exec php -l {} \;
 
