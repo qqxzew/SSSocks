@@ -31,10 +31,9 @@ services:
     volumes:
       - sssocks_db_data_v2:/var/lib/mysql
   redis:
-    image: redis:alpine
-    restart: always
-    volumes:
-      - redis_data:/data
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
 
 volumes:
   sssocks_db_data_v2:

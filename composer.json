@@ -25,6 +25,7 @@
         "nette/security": "^3.2",
         "tracy/tracy": "^2.12",
         "nette/database": "^3.2",
-        "latte/latte": "^3.1"
+        "latte/latte": "^3.1",
+        "predis/predis": "^3.5"
     }
 }
