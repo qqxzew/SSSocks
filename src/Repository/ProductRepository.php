@@ -11,6 +11,10 @@ final class ProductRepository
         private Connection $db
     ) {}
 
+    /**
+     * @return array<\Nette\Database\Row>
+     */
+
     public function getAllProducts(): array
     {
         return $this->db->fetchAll('SELECT * FROM products');
