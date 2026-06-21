@@ -5,7 +5,7 @@ namespace App\Service;
 
 use Predis\Client;
 
-final class Stockmanager
+final class StockManager
 {
     public function __construct(
         private Client $redis
@@ -27,7 +27,7 @@ final class Stockmanager
         return 0
 LUA;
 
-        $result = $this->redis->eval($script, 1, "stock:{$sku}", $quantity);
+        $result = $this->redis->eval($script, 1, "stock:{$sku}", (string) $quantity);
         return (bool)$result;
     }
 
