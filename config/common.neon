@@ -4,3 +4,4 @@ services:
     - App\Repository\ProductRepository
     - Predis\Client('tcp://redis:6379')
     - App\Service\StockManager
+    - App\Controller\CartController
