@@ -4,10 +4,12 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Service\StockManager;
+use App\Service\SessionCartStorage;
 final class CartController
 {
     public function __construct(
-        private StockManager $stockManager
+        private StockManager $stockManager,
+        private SessionCartStorage $CartStorage
     ) {}
 
     public function addToCart(): void
@@ -40,7 +42,8 @@ final class CartController
                 'status' => 'success',
                 'message' => 'Item added to cart',
                 'reserved_sku' => $sku,
-                'quantity' => $quantity
+                'quantity' => $quantity,
+                'cart_total_items' => array_sum($this->CartStorage->getItems())
             ]);
         } else {
             http_response_code(409);
@@ -49,5 +52,13 @@ final class CartController
                 'message' => 'Item not available in stock',
             ]);
         }
+    }
+
+    public function viewCart(): void
+    {
+        header('Content-type: application/json');
+        echo json_encode([
+            'cart' => $this->CartStorage->getItems()
+        ]);
     }
 }

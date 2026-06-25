@@ -5,3 +5,4 @@ services:
     - Predis\Client('tcp://redis:6379')
     - App\Service\StockManager
     - App\Controller\CartController
+    - App\Service\SessionCartStorage
