@@ -1,33 +1,34 @@
 <?php
-
 declare(strict_types=1);
 
 namespace App\Service;
 
+use Nette\Http\Session;
+
 final class SessionCartStorage
 {
-    public function __construct()
-    {
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
-
-        if (!isset($_SESSION['cart'])) {
-            $_SESSION['cart'] = [];
-        }
-    }
+    public function __construct(
+        private Session $session
+    ) {}
 
     public function addItem(string $sku, int $quantity): void
     {
-        if (isset($_SESSION['cart'][$sku])) {
-            $_SESSION['cart'][$sku] += $quantity;
+        $section = $this->session->getSection('cart');
+
+        $items = $section->items ?? [];
+
+        if (isset($items[$sku])) {
+            $items[$sku] += $quantity;
         } else {
-            $_SESSION['cart'][$sku] = $quantity;
+            $items[$sku] = $quantity;
         }
+
+        $section->items = $items;
     }
 
     public function getItems(): array
     {
-        return $_SESSION['cart'];
+        $section = $this->session->getSection('cart');
+        return $section->items ?? [];
     }
 }
