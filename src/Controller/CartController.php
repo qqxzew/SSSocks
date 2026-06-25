@@ -37,6 +37,7 @@ final class CartController
         $success = $this->stockManager->reserve($sku, $quantity);
 
         if ($success) {
+            $this->CartStorage->addItem($sku, $quantity);
             http_response_code(200);
             echo json_encode([
                 'status' => 'success',
