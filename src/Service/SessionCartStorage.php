@@ -14,8 +14,10 @@ final class SessionCartStorage
     public function addItem(string $sku, int $quantity): void
     {
         $section = $this->session->getSection('cart');
-
-        $items = $section->items ?? [];
+        /**
+         * @return array<string, int>
+         */
+        $items = $section['items'] ?? [];
 
         if (isset($items[$sku])) {
             $items[$sku] += $quantity;
@@ -23,12 +25,15 @@ final class SessionCartStorage
             $items[$sku] = $quantity;
         }
 
-        $section->items = $items;
+        $section['items'] = $items;
     }
 
+    /**
+     * @return array<string, int>
+     */
     public function getItems(): array
     {
         $section = $this->session->getSection('cart');
-        return $section->items ?? [];
+        return $section['items'] ?? [];
     }
 }
