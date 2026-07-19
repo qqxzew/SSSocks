@@ -56,6 +56,7 @@ final class InitSchema extends AbstractMigration
             ->addColumn('product_id', 'integer', ['signed' => false])
             ->addColumn('quantity', 'integer')
             ->addColumn('status', 'enum', ['values' => ['pending', 'confirmed', 'cancelled', 'compensated', 'failed'], 'default' => 'pending'])
+            ->addColumn('redis_key', 'string', ['limit' => 255])
             ->addIndex(['order_id'])
             ->addColumn('created_at', 'timestamp', ['default' => 'CURRENT_TIMESTAMP'])
             ->addForeignKey('order_id', 'orders', 'id', ['delete' => 'CASCADE', 'update' => 'CASCADE'])
