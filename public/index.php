@@ -19,6 +19,13 @@ if ($uri === '/api/cart/add' && $method === 'POST') {
     exit;
 }
 
+if ($uri === '/api/csrf-token' && $method === 'GET'){
+    header('Content-Type: application/json');
+    $csrfManager = $container->getByType(App\Security\CsrfTokenManager::class);
+    echo json_encode(['token' => $csrfManager->getOrCreateToken()]);
+    exit;
+}
+
 if ($uri === '/api/cart' && $method === 'GET') {
     $cartController = $container->getByType(App\Controller\CartController::class);
     $cartController->viewCart();

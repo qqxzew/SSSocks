@@ -1,7 +1,9 @@
 services:
     - App\Security\PasswordManager
+    - App\Security\CsrfTokenManager
     - Nette\Database\Connection('mysql:host=mysql;dbname=%env.MYSQL_DATABASE%', '%env.MYSQL_USER%', '%env.MYSQL_PASSWORD%')
     - App\Repository\ProductRepository
     - App\Service\StockManager
     - App\Controller\CartController
     - App\Service\SessionCartStorage
+

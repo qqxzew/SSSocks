@@ -9,11 +9,20 @@ final class CartController
 {
     public function __construct(
         private StockManager $stockManager,
-        private SessionCartStorage $CartStorage
+        private SessionCartStorage $CartStorage,
+        private \App\Security\CsrfTokenManager $csrfManager
     ) {}
 
     public function addToCart(): void
     {
+        $token = $_SERVER['HTTP_X_CSRF_TOKEN'] ?? null;
+
+        if($this->csrfManager->validateToken($token) === false) {
+            http_response_code(403);
+            echo json_encode(['error' => 'Invalid CSRF token']);
+            return;
+        }
+
         header('Content-type: application/json');
 
         $rawInput = file_get_contents('php://input');
