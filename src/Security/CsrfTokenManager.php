@@ -1,9 +1,10 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Security;
 
 use Nette\Http\Session;
-class CsrfTokenManager
+final class CsrfTokenManager
 {
     private const SESSION_SECTION = 'csrf';
     private const SESSION_KEY = 'token';

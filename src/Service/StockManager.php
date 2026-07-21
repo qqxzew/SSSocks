@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Service;
 
 use Predis\Client;
+use Tracy\Debugger;
 
 final class StockManager
 {
@@ -27,7 +28,12 @@ final class StockManager
         return 0
 LUA;
 
-        $result = $this->redis->eval($script, 1, "stock:{$sku}", (string) $quantity);
+        try {
+            $result = $this->redis->eval($script, 1, "stock:{$sku}", (string) $quantity);
+        } catch (\Throwable $e) {
+            \Tracy\Debugger::log($e, 'lua');
+            throw $e;
+        }
         return (bool)$result;
     }
 

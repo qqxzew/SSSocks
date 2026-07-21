@@ -14,9 +14,7 @@ final class SessionCartStorage
     public function addItem(string $sku, int $quantity): void
     {
         $section = $this->session->getSection('cart');
-        /**
-         * @return array<string, int>
-         */
+
         $items = $section['items'] ?? [];
 
         if (isset($items[$sku])) {

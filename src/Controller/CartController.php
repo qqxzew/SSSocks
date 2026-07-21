@@ -42,14 +42,19 @@ final class CartController
             echo json_encode(['error' => 'Quantity cant be =< 0']);
             return;
         }
-
-        $success = $this->stockManager->reserve($sku, $quantity);
-
+        try{
+            $success = $this->stockManager->reserve($sku, $quantity);
+        } catch (\Throwable $e) {
+            \Tracy\Debugger::log($e, 'lua');
+            http_response_code(500);
+            echo json_encode(['error' => 'Internal server error']);
+            return;
+        }
         if ($success) {
             try {
                 $this->CartStorage->addItem($sku, $quantity);
             } catch (\Throwable $e){
-                error_log($e->getMessage());
+                \Tracy\Debugger::log($e, 'checkout');
                 http_response_code(500);
                 echo json_encode(['error' => 'Internal server error']);
                 return;
