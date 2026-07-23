@@ -1,6 +1,7 @@
 services:
     - App\Security\PasswordManager
     - App\Security\CsrfTokenManager
+    - App\Security\Authenticator
     - Nette\Database\Connection('mysql:host=mysql;dbname=%env.MYSQL_DATABASE%', '%env.MYSQL_USER%', '%env.MYSQL_PASSWORD%')
     - App\Repository\ProductRepository
     - App\Service\StockManager
