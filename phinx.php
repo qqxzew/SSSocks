@@ -1,5 +1,5 @@
 <?php
-$envPath = __DIR__ . '/../.env';
+$envPath = __DIR__ . '/.env';
 if (!file_exists($envPath)) {
     throw new \RuntimeException('.env file not found.');
 }
