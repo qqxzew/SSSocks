@@ -32,6 +32,11 @@ if ($uri === '/api/cart' && $method === 'GET') {
     exit;
 }
 
+if ($uri === '/api/login' && $method === 'POST') {
+    $container->getByType(App\Controller\AuthController::class)->login();
+    exit;
+}
+
 $productRepository = $container->getByType(App\Repository\ProductRepository::class);
 $products = $productRepository->getAllProducts();
 

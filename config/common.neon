@@ -6,5 +6,6 @@ services:
     - App\Repository\ProductRepository
     - App\Service\StockManager
     - App\Controller\CartController
+    - App\Controller\AuthController
     - App\Service\SessionCartStorage
 
