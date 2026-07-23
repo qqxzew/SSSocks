@@ -4,6 +4,7 @@ services:
     - App\Security\Authenticator
     - Nette\Database\Connection('mysql:host=mysql;dbname=%env.MYSQL_DATABASE%', '%env.MYSQL_USER%', '%env.MYSQL_PASSWORD%')
     - App\Repository\ProductRepository
+    - App\Repository\UserRepository
     - App\Service\StockManager
     - App\Controller\CartController
     - App\Controller\AuthController
