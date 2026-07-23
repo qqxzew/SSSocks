@@ -9,4 +9,5 @@ services:
     - App\Controller\CartController
     - App\Controller\AuthController
     - App\Service\SessionCartStorage
+    - Predis\Client('tcp://redis:6379')
 
