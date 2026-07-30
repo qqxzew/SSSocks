@@ -36,4 +36,11 @@ final class AuthController
         }
 
     }
+    public function logout(): void
+    {
+        header('Content-type: application/json');
+        $this->user->logout(clearIdentity: true);
+        http_response_code(200);
+        echo json_encode(['status' => 'logged_out']);
+    }
 }

@@ -37,6 +37,11 @@ if ($uri === '/api/login' && $method === 'POST') {
     exit;
 }
 
+if ($uri === '/api/logout' && $method === 'POST') {
+    $container->getByType(App\Controller\AuthController::class)->logout();
+    exit;
+}
+
 $productRepository = $container->getByType(App\Repository\ProductRepository::class);
 $products = $productRepository->getAllProducts();
 
