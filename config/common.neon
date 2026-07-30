@@ -1,4 +1,9 @@
+application:
+    errorPresenter: Error
+    mapping: App\Presenter\*Presenter
+
 services:
+    router: App\Router\RouterFactory::createRouter
     - App\Security\PasswordManager
     - App\Security\CsrfTokenManager
     - App\Security\Authenticator
