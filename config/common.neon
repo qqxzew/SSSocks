@@ -1,5 +1,4 @@
 application:
-    errorPresenter: Error
     mapping: App\Presenter\*Presenter
 
 services:
@@ -11,8 +10,6 @@ services:
     - App\Repository\ProductRepository
     - App\Repository\UserRepository
     - App\Service\StockManager
-    - App\Controller\CartController
-    - App\Controller\AuthController
     - App\Service\SessionCartStorage
     - Predis\Client('tcp://redis:6379')
 
