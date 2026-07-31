@@ -12,11 +12,8 @@ final class HomePresenter extends Presenter
         private ProductRepository $productRepository
     ) {}
 
-    /**
-     * @param array<mixed> $products
-     */
     public function renderDefault(): void
     {
-        $this->template->products = $this->productRepository->getAllProducts();
+        $this->template->setParameters(['products' => $this->productRepository->getAllProducts()]);
     }
 }

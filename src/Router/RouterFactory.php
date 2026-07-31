@@ -16,6 +16,7 @@ final class RouterFactory
         $router->addRoute('api/cart', 'Cart:view');
         $router->addRoute('api/login', 'Auth:login');
         $router->addRoute('api/logout', 'Auth:logout');
+        $router->addRoute('admin', 'AdminDashboard:default');
         $router->addRoute('/', 'Home:default');
 
         return $router;
